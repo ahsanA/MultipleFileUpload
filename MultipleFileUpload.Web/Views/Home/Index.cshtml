@@ -1,0 +1,24 @@
+﻿ @{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+<form action="/Home/SaveDropzoneJsUploadedFiles" class="dropzone" id="dropzoneJsForm"></form>
+<button id="submit-all">Submit All Files</button>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        Dropzone.options.dropzoneJsForm = {
+            autoProcessQueue: false,
+            parallelUploads: 100,
+            init: function () {
+                var submitButton = document.querySelector("#submit-all");
+                var myDropzone = this;
+                submitButton.addEventListener("click", function () {
+                    myDropzone.processQueue(); 
+                });
+            }
+        };
+    </script>
+}
